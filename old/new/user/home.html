@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - FitTrackr</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    
+    <!-- header -->
+    <header class="sticky-top">
+        
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">FitTrackr</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Scopri</a>
+                    </div>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca">
+                        <button class="btn btn-outline-light" type="submit">Cerca</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar -->
+        
+    </header>
+    <!-- header -->
+    
+    <!-- main container -->
+    <main class="container-xl">
+        
+        <!-- flex container -->
+        <div class="d-flex p-1">
+            
+            <!-- main section -->
+            <section class="flex-grow-1 me-1 p-1">
+                
+                <!-- heading div -->
+                <div class="mb-1 p-1">
+                    <h1 class="m-0">I tuoi allenamenti</h1>
+                </div>
+                <!-- heading div -->
+                
+                <!-- filters div -->
+                <div class="my-1 p-1">
+                    
+                    <!-- filters button -->
+                    <button class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false" aria-controls="filtersCollapse" id="filtersBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/>
+                        </svg>
+                        Filtri
+                    </button>
+                    <!-- filters button -->
+                    
+                    <!-- collapsing div -->
+                    <div class="collapse" id="filtersCollapse">
+                        
+                        <div class="bg-dark rounded mt-1 p-1">
+                            
+                            <!-- filters form -->
+                            <form class="p-3">
+                                
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="categoryFilter" aria-label="">
+                                        <option value="n" selected>Nessuno</option>
+                                        <option value="c">Cardio</option>
+                                        <option value="s">Forza</option>
+                                    </select>
+                                    <label for="categoryFilter">Categoria</label>
+                                </div>
+                                
+                                <div class="form-floating my-3">
+                                    <select class="form-select" id="levelFilter" aria-label="">
+                                        <option value="n" selected>Nessuno</option>
+                                        <option value="e">Facile</option>
+                                        <option value="m">Medio</option>
+                                        <option value="h">Difficile</option>
+                                    </select>
+                                    <label for="levelFilter">Livello</label>
+                                </div>
+                                
+                                <div class="form-floating my-3">
+                                    <select class="form-select" id="visibilityFilter" aria-label="">
+                                        <option value="n" selected>Nessuno</option>
+                                        <option value="pb">Pubblico</option>
+                                        <option value="pr">Privato</option>
+                                    </select>
+                                    <label for="visibilityFilter">Visibilità</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-outline-light mt-3" id="filterBtn">Filtra</button>
+                                
+                            </form>
+                            <!-- filters form -->
+                            
+                        </div>
+                        
+                    </div>
+                    <!-- collapsing div -->
+                    
+                </div>
+                <!-- filters div -->
+                
+                <!-- training cards div -->
+                <div class="mt-1 p-1" id="trainingsDiv">
+                    
+                    <!-- training card -->
+                    <div class="card mb-2" id="tr_19">
+                        
+                        <!-- header: training name -->
+                        <h5 class="card-header">Sette camicie</h5>
+                        <!-- header -->
+                        
+                        <!-- body -->
+                        <div class="card-body">
+                            
+                            <h5 class="card-title">
+                                <span class="badge text-bg-secondary">CARDIO</span>
+                                <span class="badge text-bg-secondary">FACILE</span>
+                            </h5>
+                            
+                            <p class="card-text">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-success" href="#" role="button" id="tr_19_exercisesBtn">Vai a esercizi</a>
+                                <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#trEditFormCollapse_tr_19" aria-expanded="false" aria-controls="trEditFormCollapse_tr_19" id="tr_19_editBtn">Modifica</button>
+                                <button class="btn btn-danger" type="button" id="tr_19_deleteBtn">Elimina</button>
+                            </div>
+                            
+                        </div>
+                        <!-- body -->
+                        
+                        <!-- footer -->
+                        <div class="card-footer text-body-secondary">
+                            
+                            <!-- collapsing div -->
+                            <div class="collapse" id="trEditFormCollapse_tr_19">
+                                
+                                <!-- form -->
+                                <form class="p-1" id="trEditForm_tr_19">
+                                    
+                                    <div class="form-floating mb-2">
+                                        <input type="text" class="form-control" id="trEditForm_tr_19_name" placeholder="">
+                                        <label for="trEditForm_tr_19_name">Nome</label>
+                                    </div>
+                                    
+                                    <div class="form-floating my-2">
+                                        <select class="form-select" id="trEditForm_tr_19_cat" aria-label="">
+                                            <option value="c" selected>Cardio</option>
+                                            <option value="s">Forza</option>
+                                        </select>
+                                        <label for="trEditForm_tr_19_cat">Categoria</label>
+                                    </div>
+                                    
+                                    <div class="form-floating my-2">
+                                        <select class="form-select" id="trEditForm_tr_19_lev" aria-label="">
+                                            <option value="e" selected>Facile</option>
+                                            <option value="m">Medio</option>
+                                            <option value="h">Difficile</option>
+                                        </select>
+                                        <label for="trEditForm_tr_19_lev">Livello</label>
+                                    </div>
+                                    
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="" id="trEditForm_tr_19_desc"></textarea>
+                                        <label for="trEditForm_tr_19_desc">Descrizione</label>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch my-2">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="trEditForm_tr_19_vis">
+                                        <label class="form-check-label" for="trEditForm_tr_19_vis">Pubblico</label>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary mt-2" id="trEditForm_tr_19_saveBtn">Salva modifiche</button>
+                                    
+                                </form>
+                                <!-- form -->
+                                
+                            </div>
+                            <!-- collapsing div -->
+                            
+                        </div>
+                        <!-- footer -->
+                        
+                    </div>
+                    <!-- training card -->
+                    
+                    <!-- other cards: l'ultima inserita deve sempre avere mt-2-->
+                    
+                </div>
+                <!-- training cards div -->
+                
+            </section>
+            <!-- main section -->
+            
+            <!-- aside form -->
+            <aside class="d-none d-lg-block ms-1 p-1">
+                
+                <!-- sticky top -->
+                <div class="sticky-top sticky-top-custom">
+                    
+                    <!-- heading div -->
+                    <div class="mb-1 p-1">
+                        <h1 class="m-0">Crea allenamento</h1>
+                    </div>
+                    <!-- heading div -->
+                    
+                    <!-- form div-->
+                    <div class="mt-1 p-1">
+                        
+                        <!-- new training form -->
+                        <form class="p-3 bg-dark rounded" id="trCreatForm_aside">
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="trCreatForm_aside_name" placeholder="">
+                                <label for="trCreatForm_aside_name">Nome</label>
+                            </div>
+                            
+                            <div class="form-floating my-3">
+                                <select class="form-select" id="trCreatForm_aside_cat" aria-label="">
+                                    <option value="c" selected>Cardio</option>
+                                    <option value="s">Forza</option>
+                                </select>
+                                <label for="trCreatForm_aside_cat">Categoria</label>
+                            </div>
+                            
+                            <div class="form-floating my-3">
+                                <select class="form-select" id="trCreatForm_aside_lev" aria-label="">
+                                    <option value="e" selected>Facile</option>
+                                    <option value="m">Medio</option>
+                                    <option value="h">Difficile</option>
+                                </select>
+                                <label for="trCreatForm_aside_lev">Livello</label>
+                            </div>
+                            
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="" id="trCreatForm_aside_desc" ></textarea>
+                                <label for="trCreatForm_aside_desc">Descrizione</label>
+                            </div>
+                            
+                            <div class="form-check form-switch my-3">
+                                <input class="form-check-input" type="checkbox" role="switch" id="trCreatForm_aside_vis">
+                                <label class="form-check-label text-light" for="trCreatForm_aside_vis">Pubblico</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-outline-light mt-3" id="trCreatForm_aside_createBtn">Crea</button>
+                            
+                        </form>
+                        <!-- new training form -->
+                        
+                    </div>
+                    <!-- form div-->
+                    
+                </div>
+                <!-- sticky top -->
+                
+            </aside>
+            <!-- aside form -->
+            
+        </div>
+        <!-- flex container -->
+        
+    </main>
+    <!-- main container -->
+    
+    <!-- fab (to trigger modal) -->
+    <button type="button" class="btn btn-lg btn-primary d-lg-none fab" title="Crea allenamento" data-bs-toggle="modal" data-bs-target="#trCreatModal" id="trCreatFab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+        </svg>
+    </button>
+    <!-- fab -->
+    
+    
+    <!-- modal -->
+    <div class="modal fade" id="trCreatModal" tabindex="-1" aria-labelledby="trCreatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header bg-dark" data-bs-theme="dark">
+                    <h1 class="modal-title text-light fs-5" id="trCreatModalLabel">Crea allenamento</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    
+                    <!-- form -->
+                    <form class="p-3" id="trCreatForm_modal">
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="trCreatForm_modal_name" placeholder="">
+                            <label for="trCreatForm_modal_name">Nome</label>
+                        </div>
+                        
+                        <div class="form-floating my-3">
+                            <select class="form-select" id="trCreatForm_modal_cat" aria-label="">
+                                <option value="c" selected>Cardio</option>
+                                <option value="s">Forza</option>
+                            </select>
+                            <label for="trCreatForm_modal_cat">Categoria</label>
+                        </div>
+                        
+                        <div class="form-floating my-3">
+                            <select class="form-select" id="trCreatForm_modal_lev" aria-label="">
+                                <option value="e" selected>Facile</option>
+                                <option value="m">Medio</option>
+                                <option value="h">Difficile</option>
+                            </select>
+                            <label for="trCreatForm_modal_lev">Livello</label>
+                        </div>
+                        
+                        <div class="form-floating my-3">
+                            <textarea class="form-control" placeholder="" id="trCreatForm_modal_desc"></textarea>
+                            <label for="trCreatForm_modal_desc">Descrizione</label>
+                        </div>
+                        
+                        <div class="form-check form-switch mt-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="trCreatForm_modal_vis">
+                            <label class="form-check-label" for="trCreatForm_modal_vis">Pubblico</label>
+                        </div>
+                        
+                    </form>
+                    <!-- form -->
+                    
+                </div>
+                <div class="modal-footer bg-dark">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="submit" class="btn btn-outline-light" id="trCreatForm_modal_createBtn">Crea</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- modal -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</body>
+</html>

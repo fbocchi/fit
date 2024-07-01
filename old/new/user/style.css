@@ -1,0 +1,12 @@
+
+.fab {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    height: 80px;
+    width: 80px;
+}
+
+.sticky-top-custom {
+    top: 60px
+}
