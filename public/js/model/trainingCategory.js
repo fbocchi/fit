@@ -15,7 +15,7 @@ class TrainingCategoryEnum {
     static STRENGTH = new TrainingCategoryEnum('STRENGTH');
 
     static values() {
-        return [TrainingCategoryEnum.CARDIO, TrainingCategoryEnum.CARDIO];
+        return [TrainingCategoryEnum.CARDIO, TrainingCategoryEnum.STRENGTH];
     }
 
     static stringValues() {

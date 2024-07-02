@@ -1,5 +1,4 @@
-import { TrainingCategoryEnum } from '../model/trainingCategory.js'
-import { TrainingLevelEnum } from '../model/trainingLevel.js'
+import { createTrainingFormInCard } from '../components/trainingForm.js';
 
 // ...
 const createCardHeader = (training) => {
@@ -13,6 +12,14 @@ const createCardHeader = (training) => {
 }; 
 
 // ...
+const createBadgeWithText = (text) => {
+    const badge = document.createElement('span');
+    badge.classList.add('badge', 'text-bg-secondary', 'me-1');
+    badge.textContent = text;
+    return badge;
+};
+
+// ...
 const createCardBody = (training) => {
     const { id, category, level, description } = training;
 
@@ -22,13 +29,8 @@ const createCardBody = (training) => {
     const cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title');
 
-    const categoryBadge = document.createElement('span');
-    categoryBadge.classList.add('badge', 'text-bg-secondary');
-    categoryBadge.textContent = category;
-
-    const levelBadge = document.createElement('span');
-    levelBadge.classList.add('badge', 'text-bg-secondary');
-    levelBadge.textContent = level;
+    const categoryBadge = createBadgeWithText(category.toString());
+    const levelBadge = createBadgeWithText(level.toString());
 
     cardTitle.appendChild(categoryBadge);
     cardTitle.appendChild(levelBadge);
@@ -85,136 +87,7 @@ const createCardFooter = (training) => {
     collapseDiv.classList.add('collapse');
     collapseDiv.id = `tr_${id}_editingFormCollapse`;
 
-    const form = document.createElement('form');
-    form.classList.add('p-1');
-
-    // category options
-    const categories = TrainingCategoryEnum.values();
-    const categoryOptions = [];
-    for (const c of categories) {
-        const option = {};
-        if (c == TrainingCategoryEnum.CARDIO) {
-            option.value = 'c';
-            option.text = 'Cardio'
-            option.selected = 'true';
-        } else {
-            option.value = 's'
-            option.text = 'Forza'
-        }
-        categoryOptions.push(option);
-    }
-
-    // level options
-    const levels = TrainingLevelEnum.values();
-    const levelOptions = [];
-    for (const l of levels) {
-        const option = {};
-        if (l == TrainingLevelEnum.EASY) {
-            option.value = 'e';
-            optiontext = 'Facile'
-            option.selected = 'true';
-        } else if (l == TrainingLevelEnum.MEDIUM) {
-            option.value = 'm'
-            option.text = 'Medio'
-        } else {
-            option.value = 'h'
-            option.text = 'Difficile'
-        }
-        levelOptions.push(option);
-    }
-
-    // - - - form - - -
-    const formGroups = [
-        {
-            elementType: 'input',
-            type: 'text',
-            id: `tr_${id}_name_editForm`,
-            label: 'Nome'
-        },
-        {
-            elementType: 'select',
-            id: `tr_${id}_cat_editForm`,
-            label: 'Categoria',
-            options: [ // categoryOptions
-                { value: 'c', text: 'Cardio', selected: true },
-                { value: 's', text: 'Forza' }
-            ]
-        },
-        {
-            elementType: 'select',
-            id: `tr_${id}_lev_editForm`,
-            label: 'Livello',
-            options: [ // levelOptions
-                { value: 'e', text: 'Facile', selected: true },
-                { value: 'm', text: 'Medio' },
-                { value: 'h', text: 'Difficile' }
-            ]
-        },
-        {
-            elementType: 'textarea',
-            id: `tr_${id}_desc_editForm`,
-            label: 'Descrizione'
-        }
-    ];
-
-    formGroups.forEach(group => {
-        const formGroup = document.createElement('div');
-        formGroup.classList.add('form-floating', 'my-2');
-
-        let element;
-        if (group.elementType === 'input' || group.elementType === 'textarea') {
-            element = document.createElement(group.elementType);
-            element.classList.add('form-control');
-            element.id = group.id;
-            element.placeholder = '';
-        } else if (group.elementType === 'select') {
-            element = document.createElement('select');
-            element.classList.add('form-select');
-            element.id = group.id;
-            group.options.forEach(option => {
-                const opt = document.createElement('option');
-                opt.value = option.value;
-                opt.textContent = option.text;
-                if (option.selected) opt.selected = true;
-                element.appendChild(opt);
-            });
-        }
-
-        const label = document.createElement('label');
-        label.setAttribute('for', group.id);
-        label.textContent = group.label;
-
-        formGroup.appendChild(element);
-        formGroup.appendChild(label);
-        form.appendChild(formGroup);
-    });
-
-    const switchDiv = document.createElement('div');
-    switchDiv.classList.add('form-check', 'form-switch', 'my-2');
-
-    const switchInput = document.createElement('input');
-    switchInput.classList.add('form-check-input');
-    switchInput.type = 'checkbox';
-    switchInput.role = 'switch';
-    switchInput.id = `tr_${id}_vis_editForm`;
-
-    const switchLabel = document.createElement('label');
-    switchLabel.classList.add('form-check-label');
-    switchLabel.setAttribute('for', `tr_${id}_vis_editForm`);
-    switchLabel.textContent = 'Pubblico';
-
-    switchDiv.appendChild(switchInput);
-    switchDiv.appendChild(switchLabel);
-    form.appendChild(switchDiv);
-
-    const saveBtn = document.createElement('button');
-    saveBtn.type = 'submit';
-    saveBtn.classList.add('btn', 'btn-primary', 'mt-2');
-    saveBtn.id = `tr_${id}_saveBtn_editForm`;
-    saveBtn.textContent = 'Salva modifiche';
-
-    form.appendChild(saveBtn);
-    // - - - form - - -
+    const form = createTrainingFormInCard(training);
 
     collapseDiv.appendChild(form);
     cardFooter.appendChild(collapseDiv);
@@ -224,7 +97,6 @@ const createCardFooter = (training) => {
 
 // ...
 const createTrainingCard = (training) => {
-
     const { id } = training;
 
     const card = document.createElement('div');

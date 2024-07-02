@@ -1,73 +1,76 @@
-import { createForm, createTrainingFormInAside } from '../components/trainingForm.js';
+import { createTrainingsPageTemplate } from '../templates/trainingsPage.js';
+import { getTrainings } from '../model/trainingManager.js';
+import { createTrainingCard } from '../components/trainingCard.js';
 
-// ...
-const updateNavbar = (header) => {
-    // Seleziona il navbar all'interno dell'header
-    const navbar = header.querySelector('nav');
-
-    // Rendi il link Home attivo 
-    const homeLink = navbar.querySelector('.nav-link[href="#"]'); // # sarà da aggiornare!!!
-    if (homeLink) {
-        homeLink.classList.add('active');
-        homeLink.setAttribute('aria-current', 'page');
-    }
-
-    // Mostra il form di ricerca che è inizialmente nascosto
-    const searchForm = navbar.querySelector('form');
-    if (searchForm) {
-        searchForm.classList.remove = 'd-none';
-    }
+const populateTrainingsDiv = (trainingsDiv) => {
+    // Get all trainings
+    const trainings = getTrainings();
+    
+    // Populate trainings div with trainings
+    trainings.forEach(training => {
+        
+        // Create training card
+        const card = createTrainingCard(training);
+        
+        // Append card to trainings div
+        trainingsDiv.appendChild(card);
+    });
 };
 
-
-const craeteMainSection = () => {
-
+const populateMainSection = (mainSection) => {
+    // Retrieve heading
+    const heading = mainSection.querySelector('#headingMainSection');
+    
+    // Set heading
+    heading.textContent = 'I tuoi Allenamenti';
+    
+    // Retrieve trainings div
+    const trainingsDiv = mainSection.querySelector('#trainingsDiv'); 
+    
+    // Populate trainings div
+    populateTrainingsDiv(trainingsDiv);
 };
 
-const createFormInAside = (form) => {
-    // Stilizza il form come nell'aside
-};
-
-const createAside = () => {
-
-    // Il form va creato con la funzione, ma stilizzato qui, perchè non deve essere stilizzato così da nessuna altra parte
-    // cioè viene fatto solo qui e quindi non ha senso avere una funzione in un altro file che lo faccia perché non deve
-    // deve essere riutilizzata da nessuno
-
-    const form = createForm();
-    createTrainingFormInAside(form)
-
+const populateTemplate = (template) => {
+    // Retrieve main section
+    const mainSection = template.querySelector('#mainSection');
+    
+    // Populate main section
+    populateMainSection(mainSection);
 };
 
 const populateMainContainer = (mainContainer) => {
-
-    // create flex-container
-
-    // flex-items
+    // Create template
+    const trainingsPageTemplate = createTrainingsPageTemplate();
     
-    const mainSection = craeteMainSection();
-        // intestazione
-            // ...
-        // filtri
-            // ...
-        // trainings
-            // cards
-
-    const aside = createAside();
-        // sticky
-            // instestazione
-            // form
-
-    // aggiungili a flex-container
-
-    // fab e modale?
-
+    // Populate template
+    populateTemplate(trainingsPageTemplate);
+    
+    // Append template to main container
+    mainContainer.appendChild(trainingsPageTemplate);
 }
 
 // ...
+const updateNavbarCurrentLink = (navbar) => { 
+    // Retrieve Home link
+    const homeLink = navbar.querySelector('.nav-link[href="#"]'); // # sarà da aggiornare!!!
+    
+    // Make Home link active 
+    homeLink.classList.add('active');
+    homeLink.setAttribute('aria-current', 'page');
+};
+
+// ...
 const createHome = (header, mainContainer) => {
-    updateNavbar(header);
+    // Retrieve navbar
+    const navbar = header.querySelector('nav');
+    
+    // Update navbar current link
+    updateNavbarCurrentLink(navbar);
+    
+    // Populate main container
     populateMainContainer(mainContainer);
+    
     // fab e modale?
 };
 
