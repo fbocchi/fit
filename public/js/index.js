@@ -7,5 +7,3 @@ const header = document.getElementById('header');
 const mainContainer = document.getElementById('mainContainer');
 
 createLoggedInPage(false, header, mainContainer);
-
-// routing?
